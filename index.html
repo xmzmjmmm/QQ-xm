@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover"
+    />
+    <meta name="screen-orientation" content="portrait" />
+    <link rel="dns-prefetch" href="//ti.qq.com" />
+    <link rel="dns-prefetch" href="//qq-web.cdn-go.cn" />
+    <link rel="dns-prefetch" href="//aegis.qq.com" />
+    <link rel="stylesheet" href="assets/default-token.css" />
+    <script>
+      window.scriptLoaded = {};
+    </script>
+    <title></title>
+    <script>
+      (function () {
+        var url = location.href;
+        if (!(url.indexOf("openinlighthouse") > 0)) {
+          var ua = navigator.userAgent;
+          if (false) {
+            var transUrl = "https://ti.qq.com/open_qq/newIndex.html";
+            location.href = transUrl + "?url=" + encodeURIComponent(url);
+            return;
+          }
+        }
+        var img = new Image();
+        var tid = setTimeout(function () {
+          window.supportWebp2 = false;
+          img.onload = img.onerror = null;
+          img = null;
+        }, 500);
+
+        img.onload = img.onerror = function () {
+          clearTimeout(tid);
+          window.supportWebp2 = img.width === 2 && img.height === 2;
+        };
+        img.src =
+          "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+      })();
+    </script>
+    <script>
+      document.documentElement.addEventListener(
+        "touchstart",
+        function (event) {
+          if (event.touches.length > 1) {
+            event.preventDefault();
+          }
+        },
+        {
+          passive: false,
+        },
+      );
+
+      var lastTouchEnd = 0;
+      document.documentElement.addEventListener(
+        "touchend",
+        function (event) {
+          var now = Date.now();
+          if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+          }
+          lastTouchEnd = now;
+        },
+        {
+          passive: false,
+        },
+      );
+    </script>
+    <script type="module" crossorigin src="assets/main.js"></script>
+    <link rel="stylesheet" href="assets/index.css" />
+    <script type="module">
+      import.meta.url;
+      import("_").catch(() => 1);
+      async function* g() {}
+      if (location.protocol != "file:") {
+        window.__vite_is_modern_browser = true;
+      }
+    </script>
+    <script type="module">
+      !(function () {
+        if (window.__vite_is_modern_browser) return;
+        console.warn(
+          "vite: loading legacy chunks, syntax error above and the same error below should be ignored",
+        );
+        var e = document.getElementById("vite-legacy-polyfill"),
+          n = document.createElement("script");
+        ((n.src = e.src),
+          (n.onload = function () {
+            System.import(document.getElementById("vite-legacy-entry").getAttribute("data-src"));
+          }),
+          document.body.appendChild(n));
+      })();
+    </script>
+    <script>
+      (function () {
+        window.__LOCAL_FIX__ = true;
+        try {
+          var __x = new XMLHttpRequest();
+          __x.open("GET", "config.json", false);
+          __x.send(null);
+          if (__x.status === 200) {
+            window.__CFG_SYNC = JSON.parse(__x.responseText);
+            document.documentElement.setAttribute("data-theme", window.__CFG_SYNC.theme || "auto");
+          }
+        } catch (e) {
+          console.log("[FIX] sync config unavailable:", e.message);
+        }
+        window.__forceLoadLazyIcons = function () {
+          document.querySelectorAll("#page1 img.medal-item__icon[medalid]").forEach(function (img) {
+            if (img.naturalWidth > 1) return;
+            var id = img.getAttribute("medalid");
+            var status = img.getAttribute("status");
+            var lv = parseInt(status) > 0 ? status : "1";
+            var src = "res/img/" + id + "/" + lv + ".png" + (window.supportWebp2 ? ".webp" : "");
+            var probe = new Image();
+            probe.onload = function () {
+              if (img.naturalWidth <= 1) img.src = src;
+            };
+            probe.onerror = function () {};
+            probe.src = src;
+          });
+        };
+        ["DOMContentLoaded", "load"].forEach(function (ev) {
+          window.addEventListener(ev, function () {
+            setTimeout(window.__forceLoadLazyIcons, 1200);
+            setTimeout(window.__forceLoadLazyIcons, 3500);
+            setTimeout(window.__forceLoadLazyIcons, 8000);
+          });
+        });
+        document.addEventListener(
+          "click",
+          function () {
+            setTimeout(window.__forceLoadLazyIcons, 2000);
+          },
+          true,
+        );
+        var _extraPatch = function () {
+          if (!window.mqq) return;
+          var mqq = window.mqq;
+          if (!mqq.ui) mqq.ui = {};
+          mqq.ui.setOnCloseHandler = mqq.ui.setOnCloseHandler || function () {};
+          mqq.ui.showDialog = mqq.ui.showDialog || function () {};
+          mqq.ui.closeWebViews = mqq.ui.closeWebViews || function () {};
+          mqq.ui.showActionSheet = mqq.ui.showActionSheet || function () {};
+          mqq.browser = mqq.browser || {};
+        };
+        ["DOMContentLoaded", "load"].forEach(function (ev) {
+          window.addEventListener(ev, function () {
+            _extraPatch();
+            setTimeout(_extraPatch, 1000);
+          });
+        });
+        (function () {
+          if (!window.matchMedia || window.matchMedia("(pointer: coarse)").matches) return;
+          var state = { down: false, lastX: 0 };
+          var attach = function () {
+            var cv = document.querySelector("#model-canvas canvas");
+            if (!cv || cv.__dragBound) return;
+            cv.__dragBound = true;
+            cv.style.touchAction = "none";
+            cv.addEventListener("mousedown", function (e) {
+              state.down = true;
+              state.lastX = e.clientX;
+              e.preventDefault();
+            });
+            window.addEventListener("mousemove", function (e) {
+              if (!state.down) return;
+              var dx = e.clientX - state.lastX;
+              state.lastX = e.clientX;
+              var ctx = window.context;
+              if (ctx && typeof ctx.currAccRotationY === "number")
+                ctx.currAccRotationY += dx * 0.01;
+            });
+            window.addEventListener("mouseup", function () {
+              state.down = false;
+            });
+            console.log("[FIX] desktop drag-rotate enabled");
+          };
+          ["DOMContentLoaded", "load"].forEach(function (ev) {
+            window.addEventListener(ev, function () {
+              setTimeout(attach, 2500);
+            });
+          });
+          document.addEventListener(
+            "click",
+            function () {
+              setTimeout(attach, 3000);
+            },
+            true,
+          );
+        })();
+      })();
+    </script>
+    <script>
+      (function () {
+        window.reportAnalytics = function () {};
+        document.addEventListener("DOMContentLoaded", function () {
+          var t0 = Date.now();
+          (function poll() {
+            if (window.mqq && window.mqq.data && window.mqq.data.ssoRequest) {
+              var orig = window.mqq.data.ssoRequest.bind(window.mqq.data);
+              window.mqq.data.ssoRequest = function (o, cb) {
+                console.log("[HOOK ssoRequest]", o && o.cmd);
+                return orig(o, cb);
+              };
+              console.log("[LOCAL] ssoRequest wrapped");
+            } else if (Date.now() - t0 < 15000) {
+              setTimeout(poll, 200);
+            } else {
+              console.log("[LOCAL] no mqq bridge");
+            }
+          })();
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        const CFGD = {
+          uin: "",
+          nick: "",
+          avatar: "avatar.jpg",
+          theme: "auto",
+          daren: false,
+          medals: {},
+        };
+        if (window.__CFG_SYNC) {
+          try {
+            Object.assign(CFGD, window.__CFG_SYNC);
+          } catch (e) {}
+        }
+        let CFG_READY = false,
+          CFG_PENDING = [];
+        let DEFS = {};
+        let RSP9072 = JSON.stringify({
+          medals: [],
+          user: {},
+          banner: null,
+          achieved_count: 0,
+          achievedCount: 0,
+        });
+        const RSPDEF = JSON.stringify({
+          msg_rsp_basic_info: { uint32_open: 0 },
+          msg_rsp_login_card: { msg_card_info: [] },
+        });
+
+        function buildRsp() {
+          const UIN = String(CFGD.uin || "");
+          const NICK = CFGD.nick || UIN;
+          const medals = [];
+          for (const id in DEFS) {
+            const d = DEFS[id];
+            const o = (CFGD.medals || {})[id] || {};
+            const lv = d.levels || 1;
+            const sfx = ["", "I", "II", "III", "IV", "V"];
+            const time = o.time || 0;
+            const rank = o.rank || 0;
+            const descArr = Array.isArray(d.desc) ? d.desc : null;
+            const desc =
+              o.desc !== undefined && o.desc !== ""
+                ? o.desc
+                : descArr
+                  ? descArr[lv - 1]
+                  : d.desc || "";
+            const name = o.name || d.name || "勋章 #" + id;
+            const graded = [];
+            for (let i = 0; i < lv; i++) {
+              const top = i === lv - 1;
+              graded.push({
+                name: name + (lv > 1 ? " " + sfx[i + 1] : ""),
+                rank: top ? rank : 0,
+                time: top ? time : 0,
+                desc: descArr ? descArr[i] : desc,
+                value: "",
+                threshold: "",
+                url: "",
+                friend_achieve_count: 0,
+              });
+            }
+            const mtype = d.type !== undefined ? d.type : id === "1" ? 0 : lv > 1 ? 0 : 1;
+            medals.push({
+              id: id,
+              cur_level: lv,
+              type: mtype,
+              name: name,
+              start_time: time,
+              end_time: o.end_time || 0,
+              schedule: 0,
+              graded: graded,
+              button: [],
+            });
+          }
+          RSP9072 = JSON.stringify({
+            medals: medals,
+            user: {
+              nick: NICK,
+              uin: UIN,
+              avatar: CFGD.avatar || "https://q.qlogo.cn/g?b=qq&nk=" + UIN + "&s=100",
+              achieved_count: medals.length,
+            },
+            banner: null,
+            achieved_count: medals.length,
+            achievedCount: medals.length,
+          });
+          window.__RSP = RSP9072;
+        }
+        function ok(d) {
+          return { code: 0, cret: 0, msg: "success", data: d };
+        }
+        let wrapped = false;
+        function wrapMqq(mqq) {
+          if (!mqq || wrapped) return mqq;
+          if (!mqq.data) mqq.data = {};
+          const origSso = mqq.data.ssoRequest ? mqq.data.ssoRequest.bind(mqq.data) : null;
+          mqq.data.ssoRequest = function (o, cb) {
+            const cmd = (o && o.cmd) || "";
+            console.log("[MOCK] ssoRequest", cmd);
+            if (cmd.indexOf("0x9072") >= 0) {
+              setTimeout(() => cb(ok(RSP9072)), 60);
+              return;
+            }
+            if (cmd.indexOf("0xdef_1") >= 0) {
+              setTimeout(() => cb(ok(RSPDEF)), 40);
+              return;
+            }
+            if (origSso) {
+              try {
+                return origSso(o, cb);
+              } catch (e) {}
+            }
+            setTimeout(() => cb(ok("{}")), 40);
+          };
+          if (!mqq.data.getUserInfo)
+            mqq.data.getUserInfo = function (o, cb) {
+              if (typeof o === "function" && cb === undefined) {
+                cb = o;
+                o = {};
+              }
+              if (!CFG_READY) {
+                CFG_PENDING.push(function () {
+                  mqq.data.getUserInfo(o, cb);
+                });
+                return;
+              }
+              const u = String(CFGD.uin || "");
+              setTimeout(
+                () =>
+                  cb({ code: 0, ret: 0, nick: CFGD.nick || u, uin: u, faceUrl: CFGD.avatar || "" }),
+                20,
+              );
+            };
+          if (!mqq.ui) mqq.ui = {};
+          mqq.ui.popBack =
+            mqq.ui.popBack ||
+            function () {
+              history.back();
+            };
+          mqq.ui.setTitleButtons = mqq.ui.setTitleButtons || function () {};
+          mqq.ui.setWebViewBehavior = mqq.ui.setWebViewBehavior || function () {};
+          mqq.ui.showTips = mqq.ui.showTips || function () {};
+          if (!mqq.media) mqq.media = {};
+          mqq.media.saveImage = mqq.media.saveImage || function () {};
+          if (!mqq.sensor) mqq.sensor = {};
+          mqq.sensor.startAccelerometer = mqq.sensor.startAccelerometer || function () {};
+          mqq.sensor.stopAccelerometer = mqq.sensor.stopAccelerometer || function () {};
+          mqq.addEventListener = mqq.addEventListener || function () {};
+          mqq.invoke = mqq.invoke || function () {};
+          if (!mqq.debug) mqq.debug = {};
+          mqq.debug.detailLog = mqq.debug.detailLog || function () {};
+          if (!mqq.browser) mqq.browser = {};
+          mqq.browser.isDarkMode = function () {
+            return String(CFGD.theme) === "dark";
+          };
+          mqq.browser.onThemeChange = mqq.browser.onThemeChange || function () {};
+          wrapped = true;
+          console.log("[MOCK] bridge wrapped (config.json)");
+          return mqq;
+        }
+        let real = window.mqq;
+        Object.defineProperty(window, "mqq", {
+          configurable: true,
+          get() {
+            return real;
+          },
+          set(v) {
+            real = wrapMqq(v);
+          },
+        });
+        wrapMqq(real);
+        (function poll(n) {
+          if (!wrapped && n < 50) setTimeout(() => poll(n + 1), 100);
+        })(0);
+        function load(p) {
+          return fetch(p).then((r) => r.json());
+        }
+        Promise.all([load("config.json"), load("medals_default.json").catch(() => null)])
+          .then((rs) => {
+            const c = rs[0] || {};
+            Object.assign(CFGD, c);
+            DEFS = rs[1] || {};
+            buildRsp();
+            CFG_READY = true;
+            CFG_PENDING.splice(0).forEach(function (f) {
+              try {
+                f();
+              } catch (e) {}
+            });
+            window.QQMEDAL_CONFIG = {
+              uin: CFGD.uin,
+              medals: Object.keys(DEFS).map(function (id) {
+                var o = (CFGD.medals || {})[id] || {};
+                return {
+                  id: id,
+                  start_time: o.time || 0,
+                  rank: o.rank || 0,
+                  desc: o.desc !== undefined && o.desc !== "" ? o.desc : DEFS[id].desc || "",
+                };
+              }),
+            };
+            console.log("[MOCK] config.json loaded, medals=" + Object.keys(DEFS).length);
+          })
+          .catch((e) => {
+            CFG_READY = true;
+            CFG_PENDING.splice(0).forEach(function (f) {
+              try {
+                f();
+              } catch (e2) {}
+            });
+            console.log("[MOCK] config load fail", e);
+            buildRsp();
+          });
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="assets/vue.global.min.js"></script>
+    <script src="assets/vue.iife.min.js"></script>
+    <script src="assets/qui-vue3.js"></script>
+
+    <script src="assets/qqapi.wk.js" crossorigin="anonymous"></script>
+  </body>
+</html>
